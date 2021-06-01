@@ -1,37 +1,66 @@
-import React from "react"
+import React, {Component} from "react"
 import randomcolor from "randomcolor"
 import Conditional from "./Conditional"
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super()
     this.state = {
-      isLoggedIn: true,
+      firstName: "",
+      lastName:""
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+  handleChange(event) {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
   }
 
-  handleClick() {
-        this.setState((prevState) => {
-          return {
-          isLoggedIn: !prevState.isLoggedIn
-          }
-        })
-      }
-
   render() {
-    let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN"
-
     return (
-      <div>
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </div>
+      <form>
+        <input type="text" value={this.state.firstName} name="firstName" placeholder="First Name" onChange={this.handleChange}/>
+        <input type="text" value={this.state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleChange}/>
+      </form>
     )
   }
 
 
-
 }
+
+
+
+
+// class App extends React.Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       isLoggedIn: true,
+//     }
+//     this.handleClick = this.handleClick.bind(this)
+//   }
+
+//   handleClick() {
+//         this.setState((prevState) => {
+//           return {
+//           isLoggedIn: !prevState.isLoggedIn
+//           }
+//         })
+//       }
+
+//   render() {
+//     let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN"
+
+//     return (
+//       <div>
+//         <button onClick={this.handleClick}>{buttonText}</button>
+//       </div>
+//     )
+//   }
+
+// }
 
   
 
