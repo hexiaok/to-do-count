@@ -1,18 +1,25 @@
-import React, {Component,useState} from "react"
+import React, {Component,useState, useEffect} from "react"
 import randomcolor from "randomcolor"
 import Conditional from "./Conditional"
-
+ 
 
 function App() {
   const [count, setCount] = useState(0)
+  const [color, setColor] = useState("Red")
+
   function increment() {
     setCount(
       prevCount => prevCount +1
     )
   }
+
+  useEffect(() => {
+    setColor(randomcolor())
+  }, [count])
+
   return (
     <div> 
-      <h1>{count}</h1>
+      <h1 style={{color: color}}>{count}</h1>
       <button onClick={increment}>Increment</button>
     </div>
   )
